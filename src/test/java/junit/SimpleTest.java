@@ -15,12 +15,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 import java.util.stream.Stream;
 
-
-
-
 public class SimpleTest {
-
-
 
     @CsvSource(value = {"annarain/Qwerty123#" }
             ,delimiter = '/')
@@ -36,7 +31,6 @@ public class SimpleTest {
         $$("#userName-value")
                 .find(Condition.text(testData));
     }
-
     @ValueSource(strings = {"Anna"})
     @ParameterizedTest(name = "Заполнение формы {0}")
     void loginTextBox(String testData) {
@@ -48,25 +42,18 @@ public class SimpleTest {
         $("#currentAddress").setValue("Address test111");
         $("#permanentAddress").setValue("Address 2");
         $("#submit").click();
-
 //        Ожидаемый результат:
-
         $("[class='border col-md-12 col-sm-12']").shouldHave(
                 text("Anna"),
                 text("anna@mail.ru"),
                 text("Address test"),
                 text ("Address 2"));
     }
-
     static Stream<Arguments> checkMethod() {
         return Stream.of(
                 Arguments.of("annarain" ,"Qwerty123#")
-
         );
     }
-
-
-
     @MethodSource(value = "checkMethod")
     @ParameterizedTest(name = "Проверка авторизации")
     void validationAuto (String login, String password2){
@@ -74,14 +61,9 @@ public class SimpleTest {
         $("#userName").setValue(login);
         $("#password").setValue(password2);
         $("#login").click();
-
         $$("#userName-value")
                 .find(Condition.text(login));
-
     }
-
-
-
     @Disabled("testqa-1177")
     @DisplayName("Нерабочий тест")
     @Test
@@ -90,14 +72,10 @@ public class SimpleTest {
        $("username").setValue("Anna");
        $("password").setValue("qwerty123");
        $x("//*[@class=\"radius\"]").click();
-
     }
-
     @AfterEach
     void close() {
         Selenide.closeWebDriver();
     }
-
-
 }
 
