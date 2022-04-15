@@ -45,7 +45,7 @@ public class SimpleTest {
 //        Шаги:
         $("#userName").setValue(testData);
         $("#userEmail").setValue(testData + "@mail.ru");
-        $("#currentAddress").setValue("Address test111go1");
+        $("#currentAddress").setValue("Address test111");
         $("#permanentAddress").setValue("Address 2");
         $("#submit").click();
 
